@@ -1,4 +1,4 @@
-package br.com.fiap.projetoglobalsolutions.Screens.CaixaEntrada
+package br.com.fiap.projetoglobalsolutions.Screens.Favoritos
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,25 +9,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import br.com.fiap.projetoglobalsolutions.Components.Botao.Botao
 import br.com.fiap.projetoglobalsolutions.Components.Footer.Footer
 import br.com.fiap.projetoglobalsolutions.Components.Header.Header
 import br.com.fiap.projetoglobalsolutions.Components.TemplateItem.Email.EmailTemplate
 import br.com.fiap.projetoglobalsolutions.Database.repository.EmailRepository
-import br.com.fiap.projetoglobalsolutions.Database.repository.UsuarioRepository
-import br.com.fiap.projetoglobalsolutions.ui.theme.ProjetoGlobalSolutionsTheme
 
 @Composable
-fun CaixaEntrada(titulo:String, navController: NavController) {
+fun Favoritos(titulo:String, navController: NavController) {
     val context = LocalContext.current
     val emailRepository = EmailRepository(context)
-    val emails = emailRepository.listar()
+    val lista = emailRepository.listarFavs()
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
         Header(txt = titulo)
-        for(email in emails){
-            EmailTemplate(email = email,
+        for(i in lista){
+            EmailTemplate(email = i,
                 f1 = {navController.navigate("infos")})
         }
         Botao(cor = ButtonDefaults.buttonColors(Color(0xfffdaa520)),
