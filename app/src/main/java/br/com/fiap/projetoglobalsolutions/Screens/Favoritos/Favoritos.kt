@@ -29,13 +29,13 @@ fun Favoritos(titulo:String, navController: NavController) {
         }
         Botao(cor = ButtonDefaults.buttonColors(Color(0xfffdaa520)),
             txt = "Acessar Calendario",
-            funcao = { navController.navigate("eventos") },
+            funcao = { navController.navigate("/eventos") },
             posicao = Alignment.End)
-        Footer({navController.navigate("inbox")},
-            {navController.navigate("novoEmail")},
-            {navController.navigate("favoritos")},
-            {navController.navigate("enviados")},
-            {navController.navigate("excluidos")})
+        Footer({navController.navigate("/inbox")},
+            {navController.navigate("/novoEmail")},
+            {navController.navigate("/favoritos")},
+            {navController.navigate("/enviados")},
+            {navController.navigate("/excluidos")})
     }
 }
 

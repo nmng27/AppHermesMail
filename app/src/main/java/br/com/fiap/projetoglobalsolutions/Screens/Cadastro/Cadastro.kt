@@ -105,12 +105,12 @@ fun Cadastro(navController: NavController) {
                      val usuario = Usuario(0,nome,email,telefone,check,senha)
                 if(usuario != null){
                     usuarioRepository.cadastrarUsuario(usuario)
-                    navController.navigate("inbox")
+                    navController.navigate("/inbox")
                 }
             },
             posicao = Alignment.CenterHorizontally)
         Botao(cor = ButtonDefaults.buttonColors(Color(0xfffdaa520)),
-            txt = "Voltar", funcao = { navController.navigate("login") },
+            txt = "Voltar", funcao = { navController.navigate("/login") },
             posicao = Alignment.CenterHorizontally)
     }
 

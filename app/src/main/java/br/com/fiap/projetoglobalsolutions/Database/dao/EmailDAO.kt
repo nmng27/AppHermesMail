@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import br.com.fiap.projetoglobalsolutions.Model.Email
 
 @Dao
@@ -14,8 +15,8 @@ interface EmailDAO {
     @Delete
     fun excluirEmail(email: Email):Int
 
-    @Query("UPDATE TB_EMAIL SET FAVORITO = :favorito")
-    fun favoritar(favorito:Boolean)
+    @Update
+    fun favoritar(email: Email):Int
 
     @Query("SELECT * FROM TB_EMAIL")
     fun listar():List<Email>

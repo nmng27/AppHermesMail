@@ -36,7 +36,7 @@ fun ListaEventos(navController: NavController) {
             CalendarioTemplate(evento = i,{})
         }
 
-        FooterCalendario({ navController.navigate("inbox") },funcao = { /*TODO*/ }, txt = "Novo Evento")
+        FooterCalendario({ navController.navigate("inbox") },funcao = { navController.navigate("novoEvento") }, txt = "Novo Evento")
         }
     }
 

@@ -10,17 +10,7 @@ import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Texto(txt:String,tamanho:String,cor:Color) {
-    if(tamanho.toLowerCase() == "grande"){
-        Column {
-            Text(text = txt, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = cor)
-        }
-    }
-    else if(tamanho.toLowerCase() == "médio"){
-        Text(text = txt, fontSize = 22.sp, color = cor)
-    }
-    else{
-        Text(text = txt)
-    }
+fun Texto(txt:String,tamanho:Int,cor:Color) {
+    Text(text = txt, fontSize = tamanho.sp, fontWeight = FontWeight.Bold, color = cor)
 
 }

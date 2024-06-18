@@ -42,9 +42,7 @@ fun NovoEmail(navController: NavController) {
     var destinatario by remember {
         mutableStateOf("")
     }
-    var copia by remember {
-        mutableStateOf("")
-    }
+
     var assunto by remember {
         mutableStateOf("")
     }
@@ -62,15 +60,7 @@ fun NovoEmail(navController: NavController) {
             visualTransformation = VisualTransformation.None,
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Email)
         )
-        Input(
-            valor = copia,
-            funcao = {copia = it},
-            txt_label = "CC",
-            txt_placeholder = "Deseja deixar alguém em cópia?",
-            icone = Icons.Filled.Face,
-            visualTransformation = VisualTransformation.None,
-            keyboardOptions =  KeyboardOptions.Default.copy(keyboardType = KeyboardType.Email)
-        )
+
         Input(
             valor = assunto,
             funcao = {assunto = it},
@@ -92,6 +82,7 @@ fun NovoEmail(navController: NavController) {
         Botao(cor = ButtonDefaults.buttonColors(Color(0xfffdaa520)),
             txt = "Enviar",
             funcao = {
+                emailRepository.enviarEmail(Email(0,"",destinatario,assunto,corpo,favorito = false))
                 navController.navigate("inbox") },
             posicao = Alignment.CenterHorizontally)
        Footer(f1 = { "inbox" },

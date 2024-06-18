@@ -10,7 +10,6 @@ data class Email(
     val remetente:String,
     val destinatario:String,
     val assunto:String,
-    val copia:String,
     val corpo:String,
     val favorito:Boolean
 )

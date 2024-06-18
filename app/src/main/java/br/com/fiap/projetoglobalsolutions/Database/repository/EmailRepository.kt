@@ -15,9 +15,10 @@ class EmailRepository(context: Context):EmailDAO {
         return db.excluirEmail(email)
     }
 
-    override fun favoritar(favorito: Boolean) {
-        return db.favoritar(favorito)
+    override fun favoritar(email: Email): Int {
+        return db.favoritar(email)
     }
+
 
     override fun listar(): List<Email> {
         return db.listar()

@@ -23,4 +23,6 @@ interface UsuarioDAO {
     fun validar(usuario:String,senha:String):Usuario?
 
 
+
+
 }

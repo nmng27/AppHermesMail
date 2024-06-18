@@ -25,11 +25,15 @@ import androidx.navigation.NavController
 import br.com.fiap.projetoglobalsolutions.Components.Botao.Botao
 import br.com.fiap.projetoglobalsolutions.Components.Input.Input
 import br.com.fiap.projetoglobalsolutions.Components.Titulo.Titulo
+import br.com.fiap.projetoglobalsolutions.Database.dao.UsuarioDAO
 import br.com.fiap.projetoglobalsolutions.Database.repository.UsuarioRepository
+import br.com.fiap.projetoglobalsolutions.ViewModel.LoginViewModel
 import br.com.fiap.projetoglobalsolutions.ui.theme.ProjetoGlobalSolutionsTheme
 
 @Composable
 fun Login(navController: NavController) {
+
+
     var email by remember {
         mutableStateOf("")
     }
@@ -39,7 +43,7 @@ fun Login(navController: NavController) {
     val context = LocalContext.current
     val usuarioRepository = UsuarioRepository(context)
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
-        Titulo(txt = "Cadastro", tipo = true)
+        Titulo(txt = "Login", tipo = true)
         Input(
             valor = email,
             funcao = {email = it},
@@ -61,16 +65,18 @@ fun Login(navController: NavController) {
         Botao(cor = ButtonDefaults.buttonColors(Color(0xfffdaa520)),
             txt = "Entrar",
             funcao = {
-                val user = usuarioRepository.validar(email,senha)
-                if(user != null){
-                    navController.navigate("inbox")
+                val loginViewModel = LoginViewModel(usuarioRepository).logar(email,senha)
+                if(loginViewModel){
+                    navController.navigate("/inbox")
                 }
+
 
                      },
             posicao = Alignment.CenterHorizontally)
         Botao(cor = ButtonDefaults.buttonColors(Color(0xfffdaa520)),
             txt = "Cadastre-se",
-            funcao = { navController.navigate("cadastro") },
+            funcao = {
+                navController.navigate("/cadastro") },
             posicao = Alignment.CenterHorizontally)
     }
 }

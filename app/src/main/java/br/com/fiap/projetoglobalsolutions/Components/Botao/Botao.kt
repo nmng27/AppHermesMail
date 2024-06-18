@@ -13,7 +13,7 @@ import androidx.compose.ui.text.style.LineHeightStyle
 @Composable
 fun Botao(cor:ButtonColors,txt:String, funcao:()->Unit,posicao: Alignment.Horizontal) {
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = posicao) {
-        Button(onClick = { funcao }, colors = cor) {
+        Button(onClick =  funcao , colors = cor) {
             Text(text = txt)
         }
     }
